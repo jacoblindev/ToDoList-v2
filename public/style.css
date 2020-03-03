@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto&display=swap');
 
-/* Theme Color
-  - lightpurple: #f4eeff
-  - darkpurple: #dcd6f7
-  - lightblue: #a6b1e1
-  - darkblue: #424874
-*/
+:root {
+  --dark-blue: #424874;
+  --light-blue: #a6b1e1;
+  --dark-purple: #dcd6f7;
+  --light-purple: #f4eeff;
+}
 
 * {
   margin: 0;
@@ -17,100 +17,79 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+/* Layout setting */
 main {
   min-height: 100vh;
-  background-color: #424874;
+  background-color: var(--dark-blue);
   display: grid;
   grid-template-columns: 3fr 2fr;
-  grid-template-rows: 14fr 1fr;
+  grid-template-rows: 11fr 1fr;
   grid-template-areas:
-    "quotes todo"
+    "hero todo"
     "footer todo";
 }
 
-.box {
-  max-width: 60%;
-  margin: 3em auto 1em;
-  background: white;
-  border-radius: 0.5rem;
-  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
-}
-
-.item {
-  min-height: 70px;
+/* Hero Area */
+#hero {
+  grid-area: hero;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #F1F1F1;
+  padding: 3rem;
 }
 
-p {
-  margin: 0;
-  padding: 0 2em;
-  font-size: 1.8rem;
-  font-weight: 200;
-  color: #424874;
-}
-
-#quotes {
-  grid-area: quotes;
-  align-self: center;
-  padding: 4em;
-}
-
-#motivation {
-  color: #dcd6f7;
+#hero h2 {
+  color: var(--light-blue);
   font-family: 'Roboto', sans-serif;
-  font-size: 5vw;
+  font-size: 5rem;
 }
 
+/* Todo Area */
 #todo {
   grid-area: todo;
-  background-color: #f4eeff;
-  border-radius: 2em 0 0 2em;
-  box-shadow: -8px 0 15px -5px rgba(0, 0, 0, 0.5);
+  background-color: var(--light-purple);
+  border-radius: 1em 0 0 1em;
+  box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-#heading {
-  background-color: #424874;
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-  font-size: 2rem;
-  color: #f4eeff;
+/* Footer Area */
+footer {
+  grid-area: footer;
+  color: var(--dark-purple);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
 }
 
-form.item {
-  text-align: center;
-  margin-left: 20px;
+/* RWD */
+@media screen and (max-width: 1200px) {
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #hero {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  #hero h2 {
+    font-size: 5vh;
+  }
 }
 
-form.item:last-child {
-  border-bottom: 0;
-}
+@media screen and (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(50vh, auto) 5fr 1fr;
+    grid-template-areas:
+      "todo"
+      "hero"
+      "footer";
+  }
 
-input[type="text"] {
-  text-align: center;
-  height: 60px;
-  top: 10px;
-  border: none;
-  background: transparent;
-  font-size: 20px;
-  font-weight: 200;
-  width: 413px;
-}
-
-input[type="text"]:focus {
-  outline: none;
-  box-shadow: inset 0 -3px 0 0 #424874;
-}
-
-::placeholder {
-  color: lightgrey;
-  opacity: 0.8;
-}
-
-footer {
-  grid-area: footer;
-  color: #a6b1e1;
-  text-align: center;
+  /* Todo Area */
+  #todo {
+    border-radius: 0 0 1em 1em;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
+  }
 }

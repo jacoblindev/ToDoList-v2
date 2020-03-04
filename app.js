@@ -2,7 +2,8 @@
 const express = require("express"),
       mongoose = require("mongoose"),
       bodyParser = require("body-parser"),
-      expressLayouts = require("express-ejs-layouts");
+      expressLayouts = require("express-ejs-layouts"),
+      movieQuote = require("popular-movie-quotes");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -37,17 +38,23 @@ const list0 = new List({name: "Daily Workout", tasks: [{item: "Run 3k"}, {item: 
       list2 = new List({name: "Shopping", tasks: [{item: "Cat Food"}, {item: "Mask"}, {item: "Sanitizer"}]}),
       defaultLists = [list0, list1, list2];
 
+// Get Today's Date
+const today = new Date();
+const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
+// console.log(today.toDateString());
+
 // Routing
 app.get("/", (req, res) => {
   List.find({}, (err, lists) => {
     if (lists.length === 0) {
-      // console.log("Nothing in the DB!!!");
       List.insertMany(defaultLists, err => err ? console.log(err) : console.log("Insert Successfully!"));
       res.redirect("/");
     } else {
-      // res.send(`${lists[0].name} (${lists[0]._id}) : ${lists[0].tasks}`);
+      console.log(movieQuote.getSomeRandom(1)[0]);
       res.render("lists", {
-        listsName: lists
+        listsName: lists,
+        randomQuote: movieQuote.getSomeRandom(1)[0],
+        today: today.toLocaleDateString(undefined, options)
       });
     }
   })

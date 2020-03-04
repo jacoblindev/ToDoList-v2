@@ -1,9 +1,21 @@
 <section id="hero">
 
-  <h2><q>Never put off until tomorrow what you can do today!</q></h2>
+  <blockquote>
+    <p><%= randomQuote.quote %></p>
+    <cite>-- <%= randomQuote.movie + " (" + randomQuote.year + ")" %></cite>
+  </blockquote>
 
 </section>
 
 <section id="todo">
-  
+
+  <h2><%= today %></h2>
+
+  <section class="box">
+
+    <form action="/" method="GET">
+      <input type="text" name="list" value="" placeholder="Create New List"/>
+      <button><i class="fas fa-plus"></i></button>
+    </form>
+  </section>
 </section>

@@ -50,7 +50,7 @@ app.get("/", (req, res) => {
       List.insertMany(defaultLists, err => err ? console.log(err) : console.log("Insert Successfully!"));
       res.redirect("/");
     } else {
-      console.log(movieQuote.getSomeRandom(1)[0]);
+      // console.log(movieQuote.getSomeRandom(1)[0]);
       res.render("lists", {
         listsName: lists,
         randomQuote: movieQuote.getSomeRandom(1)[0],

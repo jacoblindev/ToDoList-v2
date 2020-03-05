@@ -12,10 +12,18 @@
   <h2><%= today %></h2>
 
   <section class="box">
-
+    <ul>
+      <% listsName.forEach( e => { %>
+      <li>    
+        <a href="#"><%= e.name %></a>
+        <input type="hidden" name="deleteList" value="<%= e._id %>">
+        <button type="submit"><i class="fas fa-trash-alt"></i></button>
+      </li>
+      <% }); %>
+    </ul>
     <form action="/" method="GET">
       <input type="text" name="list" value="" placeholder="Create New List"/>
-      <button><i class="fas fa-plus"></i></button>
+      <button type="submit"><i class="fas fa-plus"></i></button>
     </form>
   </section>
 </section>

@@ -74,15 +74,35 @@ h2 {
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
+.box ul li {
+  min-height: 60px;
+  font-size: 20px;
+  width: 300px;
+  list-style: none;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+ul li a {
+  text-decoration: none;
+  text-align: center;
+  line-height: 60px;
+  display: block;
+  min-height: 60px;
+  width: 240px;
+  float: left;
+  color: var(--dark-blue);
+}
+
 input[type="text"] {
   text-align: center;
   height: 60px;
+  width: 240px;
   border: none;
   background: transparent;
   font-size: 20px;
   font-weight: 200;
-  width: 282px;
   vertical-align: top;
+  float: left;
 }
 
 input[type="text"]:focus {
@@ -103,9 +123,20 @@ button {
   width: 60px;
   background-color: var(--dark-blue);
   color: var(--light-purple);
-  font-size: 30px;
+  font-size: 20px;
   border-width: 0;
-  border-radius: 0 5px 5px 0;
+  /* border-radius: 50%; */
+  cursor: pointer;
+  float: right;
+  /* margin: 5px; */
+}
+
+li:first-child button {
+  border-radius: 0 5px 0 0;
+}
+
+input[type="text"] + button {
+  border-radius: 0 0 5px 0;
 }
 
 /* Footer Area */
